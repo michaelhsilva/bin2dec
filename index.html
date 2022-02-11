@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Bin2Dec</title>
+<script language="javascript">
+
+function bin2dec() {
+	var inputnumber = document.getElementById("bin").value;
+	if (!inputnumber || inputnumber.length == 0) {
+		alert("input is required")
+	} else {
+		var expoente = -1;
+		var dec = 0;
+		for (var i = inputnumber.length - 1; i >= 0 ; i--) {
+			if (inputnumber.charAt(i) == "0" || inputnumber.charAt(i) == "1") {
+				var charat = parseInt(inputnumber.charAt(i));
+				expoente++;
+				if (charat == 0) {
+					continue;
+				}
+				dec += Math.pow(2, charat * expoente);
+				
+			} else {
+				alert("this is not a binary number")
+			}
+		}
+		document.getElementById("dec").innerHTML = "" + dec;
+	}
+	
+}
+
+</script>
+</head>
+
+<body>
+
+<input type="text" id="bin" maxlength="8"/>
+<button type="button" onclick="bin2dec()">Bin2Dec</button>
+<span id="dec"></span>
+
+</body>
+</html>
